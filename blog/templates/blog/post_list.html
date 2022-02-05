@@ -1,20 +1,26 @@
+{% load static %}
 <html>
+    
     <head>
         <title>Batuhan'ın Bloğu</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        
     </head>
     <body>
         <div>
             <h1><a href ="">Django Giriş Blog</a></h1>
         </div>
+        
+        {% for post in posts %}
         <div>
-            <p>published: 04.02.2022, 22:40</p>
-            <h2><a href="">İlk Bloğum</a></h2>
-            <p>Çok heyecan verici! bu bloğumda sizlere gündemden bahsedicem genellikle ekonomi , uzay , iktidar vs..</p>
+            <p>Yayın tarihi: {{post.published_date }}</p>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-        <div>
-            <p>published: 04.02.2022, 22:43</p>
-            <h2><a href="">İkinci Gönderim</a></h2>
-            <p>oyunlarla ilgili blok yazımı paylaşıcam sizler için herşeyi araştrıp buraya yazacağım</p>
-        </div>
-    </body> 
+        {% endfor %}
+        
+    
+</body>    
 </html>
